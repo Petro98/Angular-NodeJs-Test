@@ -1,0 +1,33 @@
+.block_header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.goOut {
+  display:flex;
+  justify-content:center;
+  border:none;
+  background-color:white;
+  width:25px;
+  height:25px;
+  cursor:pointer;
+}
+.text{
+  font-size:26px;
+}
+.block_input{
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.input-group-text{
+  width: 135px;
+}
+.block_btn{
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  width:200px;
+}

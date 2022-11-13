@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="block_header">
+    <div class="text">Add item</div>
+    <div class="goOut" (click)="close(false)"><img src="./assets/icons7.png" alt=""></div>
+  </div>
+  <div class="block_input">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Name</span>
+      </div>
+      <input type="text" class="form-control" [formControl]="name">
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Phone</span>
+      </div>
+      <input type="text" (keyup)="keyPress($event)" class="form-control" [formControl]="phone">
+    </div>
+    <ng-container *ngIf="!!phone.errors">
+      <div *ngIf="phone.errors.required">Phone number is required</div>
+      <div *ngIf="phone.errors.pattern || phone.errors.maxlength || phone.errors.minlength">Phone number must be at
+        least 10 numbers
+      </div>
+    </ng-container>
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Address</span>
+      </div>
+      <input type="text" class="form-control" [formControl]="address">
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Financial debit</span>
+      </div>
+      <input type="text" class="form-control" [formControl]="financial_debt">
+    </div>
+  </div>
+
+  <ng-container *ngIf="!!name.errors || !!address.errors || !!financial_debt.errors">
+    <div
+      *ngIf="(name.errors && name.errors.required ) || (address.errors && address.errors.required) || (financial_debt.errors &&financial_debt.errors.required)">
+      Fill in the fields
+    </div>
+  </ng-container>
+  <div class="block_btn">
+    <div class="btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input type="checkbox" checked autocomplete="off" (click)="close(true)"> Approve
+      </label>
+    </div>
+  </div>
+</div>

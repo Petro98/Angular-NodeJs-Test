@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="block_header">
+    <div class="search">
+        <input class="form-control mr-sm-2" type="search" #inputValue (input)="search(inputValue.value)" placeholder="Search by name" aria-label="Search">
+    </div>
+    <div class="btn">
+      <button type="button" class="btn btn2 btn-secondary btn-sm" (click)="create()">Add item</button>
+    </div>
+  </div>
+  <div *ngIf="form" class="container_table" [formGroup]="form">
+    <table class="table" formArrayName="tenant">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col" class="th-sm">Phone     <button mat-icon-button (click)="sortPhone()" class="btn-primary">Sort</button></th>
+        <th scope="col">Address</th>
+        <th scope="col">Financial debit</th>
+        <th scope="col" class="actions">Additional actions</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let i of getFilterTenantControls; index as index" [formGroupName]="index.toString()">
+      <tr>
+        <th scope="row">{{index}}</th>
+        <td >{{i.get('name').value}}</td>
+        <td >{{i.get('phone').value}}</td>
+        <td >{{i.get('address').value}}</td>
+        <td >{{i.get('financial_debt').value}}</td>
+        <td class="options">
+            <button class="btn_edit" (click)="edit(index,i)"><img src="./assets/icons8-32.png" alt="" ></button>
+            <button class="btn_delete" (click)="delete(index,i)"><img src="./assets/icons8.png" alt=""></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
